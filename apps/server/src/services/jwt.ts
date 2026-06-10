@@ -13,7 +13,7 @@ export function signSpeakerToken(speakerId: string, sessionId: string): string {
   return jwt.sign(
     { sub: speakerId, sessionId, role: 'speaker' } as SpeakerTokenPayload,
     config.JWT_SECRET,
-    { expiresIn: config.JWT_EXPIRES_IN }
+    { expiresIn: config.JWT_EXPIRES_IN as any }
   );
 }
 
