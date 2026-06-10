@@ -42,7 +42,7 @@ export default function SpeakerPage() {
   const wsRef = useRef<WebSocket | null>(null);
   // ── CRITICAL: use ref for the recording flag so closures always see current value ──
   const isRecordingRef = useRef(false);
-  const recognitionRef = useRef<SpeechRecognition | null>(null);
+  const recognitionRef = useRef<any | null>(null);
   const transcriptEndRef = useRef<HTMLDivElement | null>(null);
   const heartbeatRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const languageRef = useRef<Language>('en-US');
