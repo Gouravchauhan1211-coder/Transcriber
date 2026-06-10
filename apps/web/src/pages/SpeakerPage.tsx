@@ -7,8 +7,8 @@ import './SpeakerPage.css';
 
 declare global {
   interface Window {
-    SpeechRecognition: typeof SpeechRecognition;
-    webkitSpeechRecognition: typeof SpeechRecognition;
+    SpeechRecognition: any;
+    webkitSpeechRecognition: any;
   }
 }
 
@@ -125,7 +125,7 @@ export default function SpeakerPage() {
     rec.maxAlternatives = 1;
     recognitionRef.current = rec;
 
-    rec.onresult = (event) => {
+    rec.onresult = (event: any) => {
       const ws = wsRef.current;
       // Accumulate all results in this event batch
       let interimAccum = '';
@@ -170,7 +170,7 @@ export default function SpeakerPage() {
       setInterimText(interimAccum);
     };
 
-    rec.onerror = (e) => {
+    rec.onerror = (e: any) => {
       if (e.error === 'not-allowed') {
         setMicError('Microphone access denied. Please grant permission and try again.');
         isRecordingRef.current = false;
