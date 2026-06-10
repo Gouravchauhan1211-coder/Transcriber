@@ -1,0 +1,257 @@
+.viewer-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+.viewer-center {
+  align-items: center;
+  justify-content: center;
+}
+
+.bg-orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.10;
+  pointer-events: none;
+  z-index: 0;
+}
+.bg-orb-1 {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, #6366f1, transparent 70%);
+  top: -150px; left: -100px;
+}
+.bg-orb-2 {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, #10b981, transparent 70%);
+  bottom: -100px; right: -100px;
+}
+
+/* ─── Header ──────────────────────────────────────────────────────────────── */
+.viewer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  background: rgba(17, 21, 32, 0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.back-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: color 0.15s;
+}
+.back-link:hover { color: var(--text-primary); }
+
+.header-center { display: flex; align-items: center; gap: 12px; }
+
+.viewer-count-label {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.header-right { display: flex; align-items: center; gap: 10px; }
+
+.ws-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+.ws-badge.connected {
+  color: var(--green);
+  background: rgba(16, 185, 129, 0.1);
+}
+.ws-badge.disconnected {
+  color: var(--amber);
+  background: rgba(245, 158, 11, 0.1);
+  animation: blink 1.5s step-end infinite;
+}
+
+/* ─── Toolbar ─────────────────────────────────────────────────────────────── */
+.viewer-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 24px;
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 10;
+}
+
+.toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-input {
+  width: 200px;
+  padding: 7px 12px;
+  font-size: 0.85rem;
+}
+
+.toolbar-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+.toolbar-label { font-size: 0.82rem; color: var(--text-secondary); }
+
+.font-size-group {
+  display: flex;
+  gap: 4px;
+}
+.font-btn {
+  width: 32px; height: 28px;
+  background: var(--bg-hover);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.font-btn:hover, .font-btn.active {
+  background: var(--accent-light);
+  border-color: var(--accent);
+  color: #a5b4fc;
+}
+
+/* ─── Transcript ──────────────────────────────────────────────────────────── */
+.viewer-transcript-wrap {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.viewer-transcript {
+  height: 100%;
+  overflow-y: auto;
+  padding: 32px 48px;
+  line-height: 1.9;
+  color: var(--text-primary);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.transcript-placeholder {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  text-align: center;
+  margin-top: 120px;
+}
+
+.viewer-entry {
+  animation: fadeIn 0.2s ease;
+}
+
+.viewer-interim {
+  color: var(--text-secondary);
+  border-bottom: 1px dashed var(--text-muted);
+  transition: all 0.15s;
+}
+
+.search-highlight {
+  background: rgba(245, 158, 11, 0.25);
+  color: var(--amber);
+  border-radius: 3px;
+  padding: 0 2px;
+}
+
+.scroll-to-bottom {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 18px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  transition: all 0.15s;
+  animation: slideUp 0.2s ease;
+  font-family: var(--font-sans);
+}
+.scroll-to-bottom:hover { background: var(--accent-hover); transform: translateX(-50%) translateY(-2px); }
+
+/* ─── Footer ──────────────────────────────────────────────────────────────── */
+.viewer-footer {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 10px 24px;
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  position: relative;
+  z-index: 10;
+}
+.session-id-hint { margin-left: auto; font-family: var(--font-mono); }
+
+/* ─── Password card ───────────────────────────────────────────────────────── */
+.password-card, .not-found-card {
+  text-align: center;
+  max-width: 380px;
+  width: 100%;
+  padding: 40px 32px;
+  position: relative;
+  z-index: 1;
+}
+.password-icon, .not-found-icon { font-size: 2.5rem; margin-bottom: 16px; }
+.password-card h2, .not-found-card h2 { margin-bottom: 8px; font-size: 1.4rem; }
+.password-card p, .not-found-card p { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 24px; }
+.password-form { display: flex; flex-direction: column; gap: 12px; }
+
+/* ─── PiP mode ────────────────────────────────────────────────────────────── */
+.pip-mode {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 380px;
+  height: 280px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  background: var(--bg-card);
+  border: 1px solid var(--border-strong);
+  z-index: 9000;
+  overflow: hidden;
+}
+.pip-mode .viewer-toolbar { display: none; }
+.pip-mode .viewer-footer { display: none; }
+.pip-mode .viewer-transcript { padding: 14px 18px; font-size: 0.9rem !important; }
+.pip-mode .viewer-header { padding: 8px 14px; }
+
+/* ─── Responsive ──────────────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .viewer-transcript { padding: 20px 20px; }
+  .viewer-toolbar { padding: 8px 16px; }
+  .search-input { width: 140px; }
+}

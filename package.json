@@ -1,0 +1,17 @@
+{
+  "name": "livelink-transcriber",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/web",
+    "apps/server"
+  ],
+  "scripts": {
+    "dev:server": "npm run dev --workspace=apps/server",
+    "dev:web": "npm run dev --workspace=apps/web",
+    "build:server": "npm run build --workspace=apps/server",
+    "build:web": "npm run build --workspace=apps/web",
+    "build": "npm run build:server && npm run build:web",
+    "lint": "npm run lint --workspace=apps/web"
+  }
+}
